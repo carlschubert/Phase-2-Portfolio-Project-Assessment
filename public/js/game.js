@@ -30,6 +30,14 @@ Game.prototype.setCompChoice = function() {
   return compChoice
 }
 
+Game.checkWin = function() {
+  if (this.playerScore > 3) {
+    this.winner = true
+  } else if (this.compScore > 3) {
+    this.winner = false
+  }
+}
+
 Game.prototype.run = function(userChoice) {
   compChoice = this.setCompChoice()
   //refactor if time
@@ -43,7 +51,7 @@ Game.prototype.run = function(userChoice) {
       }
   } else if(userChoice == 'bobble') {
       if (compChoice == 'bobble') {
-        this.draw
+        this.draw()
       } else if (compChoice == 'pique' || compChoice == 'boomerang') {
         this.compScore++
       } else {
@@ -51,7 +59,7 @@ Game.prototype.run = function(userChoice) {
       }
   } else if(userChoice == 'pique') {
       if (compChoice == 'pique') {
-        this.draw
+        this.draw()
       } else if (compChoice == 'railroad' || compChoice == 'giraffe') {
         this.compScore++
       } else {
@@ -59,7 +67,7 @@ Game.prototype.run = function(userChoice) {
       }
   } else if(userChoice == 'boomerang') {
       if (compChoice == 'boomerang') {
-        this.draw
+        this.draw()
       } else if (compChoice == 'railroad' || compChoice == 'pique') {
         this.compScore++
       } else {
@@ -67,7 +75,7 @@ Game.prototype.run = function(userChoice) {
       }
   } else if(userChoice == 'giraffe') {
       if (compChoice == 'giraffe') {
-        this.draw
+        this.draw()
       } else if (compChoice == 'bobble' || compChoice == 'boomerang') {
         this.compScore++
       } else {
