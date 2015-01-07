@@ -6,6 +6,7 @@ $(document).ready(function() {
   $('.choice').click(function() {
       userChoice = $(this).attr('id')
       match.playGame(userChoice)
+      match.checkGameWinner()
       match.popGames()
     })
 })
