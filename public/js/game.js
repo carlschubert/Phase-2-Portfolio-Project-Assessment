@@ -16,7 +16,7 @@ Game.prototype.setUserChoice = function(setChoice) {
 
 Game.prototype.draw = function() {
   var draw = ['win', 'lose']
-  draw = draw[Math.floor(Math.random() * draw.length)
+  draw = draw[Math.floor(Math.random() * draw.length)]
   if (draw = 'win') {
     this.playerScore++
   } else {
@@ -24,24 +24,24 @@ Game.prototype.draw = function() {
   }
 }
 
-Game.prototype.compChoice = function() {
+Game.prototype.setCompChoice = function() {
   var choices = ['railroad', 'bobble', 'pique', 'boomerang', 'giraffe']
-  var compChoice = choices[Math.floor(Math.random() * choices.length)
+  var compChoice = choices[Math.floor(Math.random() * choices.length)]
   return compChoice
 }
 
 Game.prototype.run = function(userChoice) {
-  compChoice = this.compChoice
+  compChoice = this.setCompChoice()
   //refactor if time
   if(userChoice == 'railroad') {
       if (compChoice == 'railroad') {
-        this.draw
+        this.draw()
       } else if (compChoice == 'bobble' || compChoice == 'giraffe') {
         this.compScore++
       } else {
         this.playerScore++
       }
-    } else if(userChoice == 'bobble') {
+  } else if(userChoice == 'bobble') {
       if (compChoice == 'bobble') {
         this.draw
       } else if (compChoice == 'pique' || compChoice == 'boomerang') {
@@ -49,7 +49,7 @@ Game.prototype.run = function(userChoice) {
       } else {
         this.playerScore++
       }
-    } else if(userChoice == 'pique') {
+  } else if(userChoice == 'pique') {
       if (compChoice == 'pique') {
         this.draw
       } else if (compChoice == 'railroad' || compChoice == 'giraffe') {
@@ -57,7 +57,7 @@ Game.prototype.run = function(userChoice) {
       } else {
         this.playerScore++
       }
-    } else if(userChoice == 'boomerang') {
+  } else if(userChoice == 'boomerang') {
       if (compChoice == 'boomerang') {
         this.draw
       } else if (compChoice == 'railroad' || compChoice == 'pique') {
@@ -65,7 +65,7 @@ Game.prototype.run = function(userChoice) {
       } else {
         this.playerScore++
       }
-    } else if(userChoice == 'giraffe') {
+  } else if(userChoice == 'giraffe') {
       if (compChoice == 'giraffe') {
         this.draw
       } else if (compChoice == 'bobble' || compChoice == 'boomerang') {
@@ -73,9 +73,8 @@ Game.prototype.run = function(userChoice) {
       } else {
         this.playerScore++
       }
-    } else {
+  } else {
       return false
-    }
   }
 }
 
