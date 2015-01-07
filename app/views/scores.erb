@@ -1,0 +1,15 @@
+<div class="scores">
+  <h3><%= @user.name %> scores</h3>
+    <% match_number = 1 %>
+    <% @matches.each do |match| %>
+      <p>Match number: <%= match_number %> </p>
+      <% match_number += 1 %>
+      <p><%= match.winner ? 'You won the match' : 'Your opponent won the match' %></p>
+        <% @games.each do |game| %>
+        <p>Your Score: <%= match.game.score %></p>
+        <p>Opponent Score: <%= match.game.compscore %></p>
+        <%= game.winner ? 'You won the game' : 'Your opponent won the game' %>
+      <% end %>
+    <% end %>
+
+</div>
