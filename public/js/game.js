@@ -10,9 +10,6 @@ $(".player_score").text(this.playerScore)
 $(".comp_score").text(this.compScore)
 }
 
-Game.prototype.setUserChoice = function(setChoice) {
-  this.userChoice = setChoice
-}
 
 Game.prototype.draw = function() {
   var draw = ['win', 'lose']
@@ -33,9 +30,33 @@ Game.prototype.setCompChoice = function() {
 Game.prototype.checkWin = function() {
   if (this.playerScore > 3) {
     this.winner = true
+    this.exportWin()
   } else if (this.compScore > 3) {
     this.winner = false
+    this.exportWin()
   }
+}
+
+Game.prototype.prepScores = function() {
+  var scores = {}
+  scores['score'] = this.playerScore
+  scores['compscore'] = this.compScore
+  scores['winner'] = this.winner
+  return scores
+}
+
+Game.prototype.exportWin = function () {
+    var scores = this.prepScores()
+    console.log(scores)
+   $.ajax({
+      type: "POST",
+      url: '/scores',
+      data: {game: scores}
+    }).always(function() {
+      console.log('working...')
+    }).done(function() {
+
+    })
 }
 
 Game.prototype.run = function(userChoice) {
