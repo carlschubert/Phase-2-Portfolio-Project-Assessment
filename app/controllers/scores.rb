@@ -11,7 +11,3 @@ post '/scores' do
   game.save
 end
 
-get '/meditation/:id' do |id|
-  @meditation = Meditation.find(id)
-  erb :'meditation'
-end
