@@ -25,6 +25,8 @@ Match.prototype.playGame = function(userChoice) {
 }
 
 Match.prototype.checkGameWinner = function() {
+  console.log(this.gamesArr[this.gameNum])
+  this.gamesArr[this.gameNum].checkWin()
   if (this.gamesArr[this.gameNum].winner == true) {
     this.playerWins++
     this.gameNum++

@@ -30,7 +30,7 @@ Game.prototype.setCompChoice = function() {
   return compChoice
 }
 
-Game.checkWin = function() {
+Game.prototype.checkWin = function() {
   if (this.playerScore > 3) {
     this.winner = true
   } else if (this.compScore > 3) {
