@@ -3,6 +3,7 @@ function Match() {
   this.gameNum = 0
   this.playerWins = 0
   this.compWins = 0
+  this.winner = null
 }
 
 Match.prototype.newGame = function() {
@@ -38,9 +39,31 @@ Match.prototype.checkGameWinner = function() {
 
 Match.prototype.checkMatchWinner = function() {
   if (this.playerWins > 1) {
-    console.log('win')
+    this.winner = true
+    this.exportWin()
   } else if (this.compWins > 1) {
-    console.log('lose')
+    this.winner = false
+    this.exportWin()
   }
+}
+
+Match.prototype.prepScores = function() {
+  var scores = {}
+  scores['winner'] = this.winner
+  return scores
+}
+
+Match.prototype.exportWin = function () {
+    var scores = this.prepScores()
+    console.log(scores)
+   $.ajax({
+      type: "PUT",
+      url: '/match',
+      data: {match: scores}
+    }).always(function() {
+      console.log('working...more')
+    }).done(function() {
+
+    })
 }
 

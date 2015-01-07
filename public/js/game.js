@@ -50,7 +50,7 @@ Game.prototype.exportWin = function () {
     console.log(scores)
    $.ajax({
       type: "POST",
-      url: '/scores',
+      url: '/game',
       data: {game: scores}
     }).always(function() {
       console.log('working...')
