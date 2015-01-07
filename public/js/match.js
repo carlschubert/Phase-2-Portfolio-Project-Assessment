@@ -20,3 +20,18 @@ $(".player_score").text( this.gamesArr[this.gameNum].playerScore)
 $(".comp_score").text( this.gamesArr[this.gameNum].compScore)
 }
 
+Match.prototype.playGame = function(userChoice) {
+  this.gamesArr[this.gameNum].run(userChoice)
+}
+
+Match.prototype.checkGameWinner = function() {
+  if (this.gamesArr[this.gameNum].winner == true) {
+    this.playerWins++
+    this.gameNum++
+  } else if (this.gamesArr[this.gameNum].winner == false) {
+    this.compWins++
+    this.gameNum++
+  }
+
+}
+
