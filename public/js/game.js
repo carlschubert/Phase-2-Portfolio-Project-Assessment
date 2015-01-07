@@ -2,9 +2,6 @@ function Game() {
   this.playerScore = 0
   this.compScore = 0
   this.winner = null
-  this.choices = ['railroad', 'bobble', 'pique', 'boomerang', 'giraffe']
-  this.userChoice = ''
-  this.compChoice = ''
 }
 
 
@@ -27,8 +24,14 @@ Game.prototype.draw = function() {
   }
 }
 
-Game.prototype.run = function() {
-  this.compChoice = this.choices[Math.floor(Math.random() * choices.length)
+Game.prototype.compChoice = function() {
+  var choices = ['railroad', 'bobble', 'pique', 'boomerang', 'giraffe']
+  var compChoice = choices[Math.floor(Math.random() * choices.length)
+  return compChoice
+}
+
+Game.prototype.run = function(userChoice) {
+  compChoice = this.compChoice
   //refactor if time
   if(userChoice == 'railroad') {
       if (compChoice == 'railroad') {
@@ -73,9 +76,6 @@ Game.prototype.run = function() {
     } else {
       return false
     }
-
-    return outcome
   }
-
 }
 
