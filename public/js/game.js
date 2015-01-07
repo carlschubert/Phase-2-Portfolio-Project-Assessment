@@ -2,6 +2,9 @@ function Game() {
   this.playerScore = 0
   this.compScore = 0
   this.winner = null
+  this.choices = ['railroad', 'bobble', 'pique', 'boomerang', 'giraffe']
+  this.userChoice = ''
+  this.compChoice = ''
 }
 
 
@@ -9,3 +12,70 @@ Game.prototype.popScore = function() {
 $(".player_score").text(this.playerScore)
 $(".comp_score").text(this.compScore)
 }
+
+Game.prototype.setUserChoice = function(setChoice) {
+  this.userChoice = setChoice
+}
+
+Game.prototype.draw = function() {
+  var draw = ['win', 'lose']
+  draw = draw[Math.floor(Math.random() * draw.length)
+  if (draw = 'win') {
+    this.playerScore++
+  } else {
+    this.compScore++
+  }
+}
+
+Game.prototype.run = function() {
+  this.compChoice = this.choices[Math.floor(Math.random() * choices.length)
+  //refactor if time
+  if(userChoice == 'railroad') {
+      if (compChoice == 'railroad') {
+        this.draw
+      } else if (compChoice == 'bobble' || compChoice == 'giraffe') {
+        this.compScore++
+      } else {
+        this.playerScore++
+      }
+    } else if(userChoice == 'bobble') {
+      if (compChoice == 'bobble') {
+        this.draw
+      } else if (compChoice == 'pique' || compChoice == 'boomerang') {
+        this.compScore++
+      } else {
+        this.playerScore++
+      }
+    } else if(userChoice == 'pique') {
+      if (compChoice == 'pique') {
+        this.draw
+      } else if (compChoice == 'railroad' || compChoice == 'giraffe') {
+        this.compScore++
+      } else {
+        this.playerScore++
+      }
+    } else if(userChoice == 'boomerang') {
+      if (compChoice == 'boomerang') {
+        this.draw
+      } else if (compChoice == 'railroad' || compChoice == 'pique') {
+        this.compScore++
+      } else {
+        this.playerScore++
+      }
+    } else if(userChoice == 'giraffe') {
+      if (compChoice == 'giraffe') {
+        this.draw
+      } else if (compChoice == 'bobble' || compChoice == 'boomerang') {
+        this.compScore++
+      } else {
+        this.playerScore++
+      }
+    } else {
+      return false
+    }
+
+    return outcome
+  }
+
+}
+
