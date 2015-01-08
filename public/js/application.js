@@ -5,6 +5,7 @@ $(document).ready(function() {
 
   $('.choice').click(function() {
       userChoice = $(this).attr('id')
+      //refactor into one wrapper method
       match.playGame(userChoice)
       match.checkGameWinner()
       match.checkMatchWinner()
@@ -20,9 +21,9 @@ $(document).ready(function() {
        type: 'POST',
      }).always(function(){
        match.resetMatch()
-       match.popGames()
      }).done(function(response){
        $('.content').empty().append(response)
+       match.popGames()
        $('.choice').click(function() {
           userChoice = $(this).attr('id')
           match.playGame(userChoice)
@@ -30,6 +31,7 @@ $(document).ready(function() {
           match.checkMatchWinner()
           match.popGames()
         })
+
      }).fail(function(){
        console.log('failed')
      })
