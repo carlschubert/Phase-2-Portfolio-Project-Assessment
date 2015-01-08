@@ -53,7 +53,6 @@ Game.prototype.exportWin = function () {
       url: '/game',
       data: {game: scores}
     }).always(function() {
-      console.log('working...')
     }).done(function() {
 
     })
