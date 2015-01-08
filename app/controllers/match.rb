@@ -10,6 +10,12 @@ post '/match' do
   match = Match.new()
   match.user = current_user
   match.save
-  erb :match
+  if request.xhr?
+    erb :match, layout: false
+  else
+    erb :match
+  end
 end
+
+
 
