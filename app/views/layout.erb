@@ -31,9 +31,9 @@
     </nav>
       <div id="login-toolbar">
           <% if current_user %>
-            <a href="/logout">Logout</a>
+            <button><a href="/logout">Logout</a></button>
           <% else %>
-            <a href="/login">Login</a> | <a href="/signup">Signup</a>
+            <button id="login_button"><a href='/login'>Login</a></button> | <button id="signup_button"><a href='/signup'>Signup</a></button>
           <% end %>
       </div>
     </div>
