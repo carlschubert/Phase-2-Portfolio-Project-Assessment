@@ -1,9 +1,17 @@
 get '/login' do
+  if request.xhr?
+    erb :'auth/login', layout: false
+  else
   erb :'auth/login'
+  end
 end
 
 get '/signup' do
+  if request.xhr?
+    erb :'auth/signup', layout: false
+  else
   erb :'auth/signup'
+  end
 end
 
 get '/logout' do
