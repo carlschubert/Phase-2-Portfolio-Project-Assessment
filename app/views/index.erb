@@ -1,7 +1,7 @@
-
 <form action = "/match" method = "POST">
   <p><input type = "submit" value = "New Game"></p>
 </form>
+
 
   <% if current_user %>
     <form action = "/scores/<%= current_user.id %>" method = "GET">
