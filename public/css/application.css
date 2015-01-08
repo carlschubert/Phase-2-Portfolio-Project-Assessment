@@ -3,5 +3,8 @@ h1{
   text-align: center;
 }
 
+#new_game_button{
+  display: none;
+}
 
 
