@@ -14,6 +14,14 @@ Match.prototype.newGame = function() {
   return games
 }
 
+Match.prototype.resetMatch = function() {
+  this.gamesArr = this.newGame()
+  this.gameNum = 0
+  this.playerWins = 0
+  this.compWins = 0
+  this.winner = null
+}
+
 Match.prototype.popGames = function() {
 $(".player_games_won").text(this.playerWins)
 $(".comp_games_won").text(this.compWins)
@@ -40,9 +48,13 @@ Match.prototype.checkGameWinner = function() {
 Match.prototype.checkMatchWinner = function() {
   if (this.playerWins > 1) {
     this.winner = true
+    $('.choice').toggle()
+    $('#new_game_button').toggle()
     this.exportWin()
   } else if (this.compWins > 1) {
     this.winner = false
+    $('.choice').toggle()
+    $('#new_game_button').toggle()
     this.exportWin()
   }
 }
@@ -61,9 +73,7 @@ Match.prototype.exportWin = function () {
       url: '/match',
       data: {match: scores}
     }).always(function() {
-      console.log('working...more')
     }).done(function() {
-
     })
 }
 
